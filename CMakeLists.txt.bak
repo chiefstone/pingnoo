@@ -110,12 +110,8 @@ elseif(WIN32)
     if(NOT DEFINED qtPath)
       set(qtPath "D:\\Qt\\5.15.2\\msvc2019_64\\bin")
     endif()
-    
-    # string(REPLACE "\\" "\\\\" qtPath ${qtPath})
-    
-    # set(qtPath64 ${qtPath})
-
-    set(qtPath64  "D:/Qt/5.15.2/msvc2019_64/bin")
+    string(REPLACE "\\" "\\\\" qtPath ${qtPath})
+    set(qtPath64 ${qtPath})
 
     if(DEFINED ENV{PINGNOO_BUILD_QTDIR_X86})
         string(REPLACE "\\" "\\\\" qtPath $ENV{PINGNOO_BUILD_QTDIR_X86})

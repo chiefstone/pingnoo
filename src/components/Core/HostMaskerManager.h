@@ -66,7 +66,7 @@ namespace Nedrysoft { namespace Core {
              *
              * @returns     zero if no error occurred; otherwise non-zero.
              */
-            virtual auto enabled(Nedrysoft::Core::HostMaskType type) -> bool;
+            virtual auto enabled(Nedrysoft::Core::HostMask::HostMaskType type) -> bool;
 
             /**
              * @brief       Set whether the host masker should be used for a given type.
@@ -76,7 +76,7 @@ namespace Nedrysoft { namespace Core {
              *
              * @returns     zero if no error occurred; otherwise non-zero.
              */
-            virtual auto setEnabled(HostMaskType type, bool enabled) -> void;
+            virtual auto setEnabled(HostMask::HostMaskType type, bool enabled) -> void;
 
             /**
              * @brief       Registers a host masker with this manager.
@@ -100,7 +100,7 @@ namespace Nedrysoft { namespace Core {
             virtual auto maskers() -> QList<Nedrysoft::Core::IHostMasker *>;
 
         private:
-            QMap<Nedrysoft::Core::HostMaskType, bool> m_maskingState;
+            QMap<Nedrysoft::Core::HostMask::HostMaskType, bool> m_maskingState;
             QList<Nedrysoft::Core::IHostMasker *> m_maskers;
     };
 }}

@@ -27,7 +27,7 @@
 #include <QAction>
 #include <QPointer>
 #include <RibbonAction>
-
+using namespace Nedrysoft::Ribbon;
 namespace Nedrysoft { namespace Core {
     /**
      * @brief       The RibbonActionProxy class is used to proxy actions depending on context.
@@ -64,7 +64,13 @@ namespace Nedrysoft { namespace Core {
              */
             auto activeAction() -> Nedrysoft::Ribbon::RibbonAction *;
 
-        protected:
+
+            auto triggerEvent(Nedrysoft::Ribbon::Event* event) -> void override
+            {
+                throw std::logic_error("The method or operation is not implemented.");
+            }
+
+    protected:
             /**
              * @brief       Connects the current action to the proxy.
              */

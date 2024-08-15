@@ -40,7 +40,7 @@ Nedrysoft::Core::HostMaskingRibbonGroup::HostMaskingRibbonGroup(QWidget *parent)
             return;
         }
 
-        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMaskType::Clipboard, checked);
+        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMask::HostMaskType::Clipboard, checked);
     });
 
     connect(ui->maskOutputCheckBox, &QCheckBox::clicked, [=](bool checked) {
@@ -50,7 +50,7 @@ Nedrysoft::Core::HostMaskingRibbonGroup::HostMaskingRibbonGroup(QWidget *parent)
             return;
         }
 
-        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMaskType::Output, checked);
+        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMask::HostMaskType::Output, checked);
     });
 
     connect(ui->maskScreenCheckBox, &QCheckBox::clicked, [=](bool checked) {
@@ -60,15 +60,15 @@ Nedrysoft::Core::HostMaskingRibbonGroup::HostMaskingRibbonGroup(QWidget *parent)
             return;
         }
 
-        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMaskType::Screen, checked);
+        hostMaskerManager->setEnabled(Nedrysoft::Core::HostMask::HostMaskType::Screen, checked);
     });
 
     auto hostMaskManager = Nedrysoft::Core::IHostMaskerManager::getInstance();
 
     if (hostMaskManager) {
-        ui->maskScreenCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMaskType::Screen));
-        ui->maskOutputCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMaskType::Output));
-        ui->maskClipboardCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMaskType::Clipboard));
+        ui->maskScreenCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Screen));
+        ui->maskOutputCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Output));
+        ui->maskClipboardCheckBox->setChecked(hostMaskManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Clipboard));
     }
 }
 

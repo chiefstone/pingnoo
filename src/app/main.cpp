@@ -33,6 +33,7 @@
 #include <QGuiApplication>
 #include <QIcon>
 #include <QJsonDocument>
+#include <QLabel>
 #include <QMainWindow>
 #include <QStandardPaths>
 #include <QTimer>
@@ -96,7 +97,7 @@ int main(int argc, char **argv) {
     }
 #else
     if (applicationDir.exists("translations")) {
-        translationsPath = applicationDir.exists("translations");
+        translationsPath = applicationDir.filePath("translations");
     }
 #endif
 
@@ -123,6 +124,23 @@ int main(int argc, char **argv) {
     auto componentManager = Nedrysoft::ComponentSystem::IComponentManager::getInstance();
 
     componentManager->addObject(componentLoader);
+
+	// adding an object to the registry
+
+	Nedrysoft::ComponentSystem::addObject(new QLabel);
+
+	// get a list of all objects in the registry
+
+	QList<QObject*> objects = Nedrysoft::ComponentSystem::allObjects();
+
+	// get the first matching object of the given type
+
+	auto myLabel = Nedrysoft::ComponentSystem::getObject<QLabel>();
+
+	// get all objects of the given type
+
+	QList<QLabel*> labels = Nedrysoft::ComponentSystem::getObjects<QLabel>();
+
 
     SPDLOG_DEBUG("Application started.");
 
@@ -222,7 +240,7 @@ int main(int argc, char **argv) {
         return true;
     });
 
-    int exitCode;
+    int exitCode(999);
 
     if (Nedrysoft::ComponentSystem::getObject<QMainWindow>()) {
 #if defined(Q_OS_WINDOWS)

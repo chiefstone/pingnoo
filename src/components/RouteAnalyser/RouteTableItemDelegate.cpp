@@ -124,7 +124,7 @@ auto Nedrysoft::RouteAnalyser::RouteTableItemDelegate::paint(
 
             paintBackground(pingData, painter, option, index);
 
-            if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMaskType::Screen))) {
+            if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Screen))) {
                 paintText(pingData->maskedHostAddress(), painter, option, index, false);
             } else {
                 paintText(pingData->hostAddress(), painter, option, index, false);
@@ -138,7 +138,7 @@ auto Nedrysoft::RouteAnalyser::RouteTableItemDelegate::paint(
 
             paintBackground(pingData, painter, option, index);
 
-            if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMaskType::Screen))) {
+            if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Screen))) {
                 paintText(pingData->maskedHostName(), painter, option, index, false);
             } else {
                 paintText(pingData->hostName(), painter, option, index, false);

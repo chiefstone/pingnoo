@@ -29,9 +29,9 @@
 Nedrysoft::Core::HostMaskerManager::HostMaskerManager() {
     QSettings settings;
 
-    m_maskingState[Nedrysoft::Core::HostMaskType::Screen] = settings.value("HostMaskerManager/Screen",true).toBool();
-    m_maskingState[Nedrysoft::Core::HostMaskType::Output] = settings.value("HostMaskerManager/Output",true).toBool();
-    m_maskingState[Nedrysoft::Core::HostMaskType::Clipboard] = settings.value(
+    m_maskingState[Nedrysoft::Core::HostMask::HostMaskType::Screen] = settings.value("HostMaskerManager/Screen",true).toBool();
+    m_maskingState[Nedrysoft::Core::HostMask::HostMaskType::Output] = settings.value("HostMaskerManager/Output",true).toBool();
+    m_maskingState[Nedrysoft::Core::HostMask::HostMaskType::Clipboard] = settings.value(
         "HostMaskerManager/Clipboard",
         true
     ).toBool();
@@ -40,7 +40,7 @@ Nedrysoft::Core::HostMaskerManager::HostMaskerManager() {
 Nedrysoft::Core::HostMaskerManager::~HostMaskerManager() {
 }
 
-auto Nedrysoft::Core::HostMaskerManager::setEnabled(Nedrysoft::Core::HostMaskType type, bool state) -> void {
+auto Nedrysoft::Core::HostMaskerManager::setEnabled(Nedrysoft::Core::HostMask::HostMaskType type, bool state) -> void {
     QSettings settings;
 
     if (m_maskingState.contains(type)) {
@@ -51,7 +51,7 @@ auto Nedrysoft::Core::HostMaskerManager::setEnabled(Nedrysoft::Core::HostMaskTyp
 
     m_maskingState[type] = state;
 
-    QMetaEnum metaEnum = QMetaEnum::fromType<Nedrysoft::Core::HostMaskType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<Nedrysoft::Core::HostMask::HostMaskType>();
 
     auto keyName = metaEnum.valueToKey(static_cast<int>(type));
 
@@ -60,7 +60,7 @@ auto Nedrysoft::Core::HostMaskerManager::setEnabled(Nedrysoft::Core::HostMaskTyp
     Q_EMIT maskStateChanged(type, state);
 }
 
-auto Nedrysoft::Core::HostMaskerManager::enabled(Nedrysoft::Core::HostMaskType type) -> bool {
+auto Nedrysoft::Core::HostMaskerManager::enabled(Nedrysoft::Core::HostMask::HostMaskType type) -> bool {
     if (m_maskingState.contains(type)) {
         return m_maskingState[type];
     }

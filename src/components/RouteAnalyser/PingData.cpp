@@ -81,7 +81,7 @@ auto Nedrysoft::RouteAnalyser::PingData::plotTitle() -> QString {
 
     QString titleString;
 
-    if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMaskType::Screen))) {
+    if ((hostMaskerManager) && (hostMaskerManager->enabled(Nedrysoft::Core::HostMask::HostMaskType::Screen))) {
         titleString = QString(QObject::tr("Hop %1")).arg(m_hop) + " " + m_maskedHostName + " (" + m_maskedHostAddress + ")";
     } else {
         titleString = QString(QObject::tr("Hop %1")).arg(m_hop) + " " + m_hostName + " (" + m_hostAddress + ")";

@@ -737,7 +737,7 @@ auto Nedrysoft::RouteAnalyser::RouteAnalyserWidget::onRouteResult(
             connect(
                 hostMaskerManager,
                 &Nedrysoft::Core::IHostMaskerManager::maskStateChanged,
-                [pingData, plotTitleLabel](Nedrysoft::Core::HostMaskType type, bool state) {
+                [pingData, plotTitleLabel](Nedrysoft::Core::HostMask::HostMaskType type, bool state) {
                     pingData->updateModel();
                     plotTitleLabel->setText(pingData->plotTitle());
             });
